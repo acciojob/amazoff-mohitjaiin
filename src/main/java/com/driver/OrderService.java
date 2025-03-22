@@ -16,7 +16,9 @@ public class OrderService {
     }
 
     public void addPartner(String partnerId){
+        System.out.println("saving");
         orderRepository.savePartner(partnerId);
+
     }
 
     public void createOrderPartnerPair(String orderId, String partnerId){
@@ -28,6 +30,8 @@ public class OrderService {
     }
 
     public DeliveryPartner getPartnerById(String partnerId){
+        partnerId = partnerId.trim(); // Trim any leading or trailing spaces
+        System.out.println("Service layer - Looking for partner: '" + partnerId + "'");
         return orderRepository.findPartnerById(partnerId);
     }
 
@@ -56,6 +60,7 @@ public class OrderService {
     }
 
     public Integer getOrdersLeftAfterGivenTimeByPartnerId(String time, String partnerId){
+
         return orderRepository.findOrdersLeftAfterGivenTimeByPartnerId(time, partnerId);
     }
 
